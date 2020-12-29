@@ -1,0 +1,31 @@
+
+''' vsc_launcher.vbs 設定ファイル（SJIS）
+'   
+'   このファイル中では以下変数が使用可能です。
+'   strWorkDir      作業中ディレクトリ
+'   strWorkFileName 呼び出し元のスクリプト名
+
+
+''' Visual Studio Codeのパス（任意）
+'   既定のパスから変更している場合は以下で指定してください。
+'   以下のパスが DEFAULT_VSC_PATH で定義されており、既定として使用します。
+'oConfigs.Item("VSC_PATH") = "%ProgramFiles%\Microsoft VS Code\Code.exe"
+
+
+''' Node.jsのホームディレクトリ（必須）
+oConfigs.Item("NODE_HOME") = "C:\PathTo\node"
+
+
+''' NODE_PATH変数の設定（任意）
+'oConfigs.Item("NODE_PATH") = oConfigs.Item("NODE_HOME") & ";" \
+'    & oConfigs.Item("NODE_HOME") & "\node_modules"
+
+
+''' Gitのインストールパスの追加
+oEnv.Item("GIT_HOME") = "C:\PathTo\Git"
+
+
+''' 任意の変数追加
+oEnv.Item("PATH") = oEnv.Item("PATH") & ";" _
+    & oEnv.Item("GIT_HOME") & "\bin"
+
