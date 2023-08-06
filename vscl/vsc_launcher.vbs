@@ -74,13 +74,20 @@ End If
 
 
 ''' Visual Studio Code‚ÌƒpƒX‚ğæ“¾`‹N“®
-Dim strVSCPath, strCmdLine
+Dim strVSCPath, strCmdLine, strCmdArgs
 If (oConfigs.Item("VSC_PATH") <> "") Then
     strVSCPath = oConfigs.Item("VSC_PATH")
 Else
     strVSCPath = DEFAULT_VSC_PATH
 End If
-strCmdLine = """" & strVSCPath & """"
+
+Dim i
+strCmdArgs = ""
+For i = 0 To (WScript.Arguments.Count -1) Step 1
+    strCmdArgs = strCmdArgs & " """ & WScript.Arguments(i) & """"
+Next
+
+strCmdLine = """" & strVSCPath & """" & strCmdArgs
 Call oWS.Run(strCmdLine, 4, False)
 
 
